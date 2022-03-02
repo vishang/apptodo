@@ -1,22 +1,36 @@
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 import TodoScreen from "../screens/TodoScreen";
 import color from "../constants/constant";
 import EditTodoScreen from "../screens/EditTodoScreen";
 
-const TodoNavigator = createStackNavigator(
-  {
-    Todo: TodoScreen,
-    EditTodo: EditTodoScreen,
-  },
-  {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: color.primary,
-      },
-      headerTintColor: "white",
-    },
-  }
-);
+const Stack = createNativeStackNavigator();
 
-export default createAppContainer(TodoNavigator);
+const TodoNavigator = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Todo" component={TodoScreen} />
+        <Stack.Screen name="EditTodo" component={EditTodoScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+// const TodoNavigator = createStackNavigator(
+//   {
+//     Todo: TodoScreen,
+//     EditTodo: EditTodoScreen,
+//   },
+//   {
+//     defaultNavigationOptions: {
+//       headerStyle: {
+//         backgroundColor: color.primary,
+//       },
+//       headerTintColor: "white",
+//     },
+//   }
+// );
+
+export default TodoNavigator;

@@ -3,8 +3,10 @@ import { FlatList, View } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import Card from "../components/card";
 import Footer from "../components/Footer";
+import { useNavigation } from "@react-navigation/native";
 
 const TodoScreen = (props) => {
+  const navigation = useNavigation();
   const todo = useSelector((state) => state.todo.alltodo);
   const dispatch = useDispatch();
   const removeid = (id) => {
@@ -16,12 +18,14 @@ const TodoScreen = (props) => {
   };
 
   const editid = (id) => {
-    props.navigation.navigate("EditTodo", { todoID: id });
+    navigation.navigate("EditTodo", { todoID: id }); //v6
+    //props.navigation.navigate("EditTodo", { todoID: id }); v4
   };
 
   return (
     <View>
       <Footer />
+
       <FlatList
         data={todo}
         keyExtractor={(item) => item.id}

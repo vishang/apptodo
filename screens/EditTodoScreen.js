@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
+import { useRoute } from "@react-navigation/native";
 
 const EditTodoScreen = (props) => {
-  const todoID = props.navigation.getParam(todoID);
+  const route1 = useRoute();
+  const todoID = route1.params.todoID; //v6
+  //props.navigation.getParam v4
   console.log("check id => " + todoID);
   const editedTodo = useSelector((state) =>
     state.todo.alltodo.find((todo) => todo.id === todoID)
