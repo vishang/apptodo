@@ -5,7 +5,7 @@ import { useRoute } from "@react-navigation/native";
 
 const EditTodoScreen = (props) => {
   const route1 = useRoute();
-  const todoID = route1.params.todoID; //v6
+  const todoID = route1.params.todoID; //v6 //testing
   //props.navigation.getParam v4
   console.log("check id => " + todoID);
   const editedTodo = useSelector((state) =>
